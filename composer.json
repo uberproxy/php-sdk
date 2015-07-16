@@ -1,0 +1,15 @@
+{
+    "name": "uberproxy/php-client",
+    "description": "UberProxy PHP client",
+    "authors": [
+        {
+            "name": "Uberproxy",
+            "email": "uberproxy@uberproxy.org"
+        }
+    ],
+    "autoload": {
+        "psr-0": {"UberProxy": "src/"}
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
