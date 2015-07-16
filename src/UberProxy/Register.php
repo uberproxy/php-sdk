@@ -9,7 +9,7 @@ class Register extends Command
     protected $routes_regex = array();
     protected $extra  = array();
     protected $hosts  = array();
-    protected $client = "";
+    protected $worker = "";
     protected $rcode = 0;
     protected $plugins = array();
     protected $rewriteHost = null;
@@ -51,9 +51,9 @@ class Register extends Command
         return $this;
     }
 
-    public function addClient($client)
+    public function worker($worker)
     {
-        $this->client = $client;
+        $this->worker = $worker;
         return $this;
     }
     
@@ -72,7 +72,7 @@ class Register extends Command
     public function toArray()
     {
         return array(
-            'client'   => $this->client,
+            'worker'   => $this->worker,
             'hostname' => $this->hosts,
             'extra'    => $this->extra,
             'maxreq'   => $this->maxreq,

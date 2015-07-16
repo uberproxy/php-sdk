@@ -13,6 +13,11 @@ class Client
         $this->secret = $secret;
     }
 
+    public function deregister()
+    {
+        return new Deregister($this);
+    }
+
     public function register()
     {
         return new Register($this);
@@ -32,12 +37,12 @@ class Client
         $response = curl_exec($ch);
         $resCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        if ($resCode !== 200) {
-            throw new \RuntimeException("Invalid response code ($resCode)");
-        }
         $object = json_decode($response, true);
         if (!empty($object['error'])) {
             throw new \RuntimeException($object['exception']);
+        }
+        if ($resCode !== 200) {
+            throw new \RuntimeException("Invalid response code ($resCode)");
         }
         return $object;
     }
